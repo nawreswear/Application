@@ -1,0 +1,43 @@
+{% extends 'bloc/base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+    <title>Liste du personnel</title>
+</head>
+<body><div class="jumbotron text-center">
+    <h1>Liste du personnel</h1>
+</div>
+
+    <ul>
+    {% for personne in personnel %}
+    <div class="container">
+        <div class="row">
+          <div class="col-sm-4">
+        <li><b>Nom:</b> {{ personne.name }}
+            <b>Prenom:</b> {{ personne.prenom }}<br>
+            <b>lien_profil:</b> {{ personne.lien_profil }}<br>
+            <b>expertise:</b> {{ personne.expertise }}</li>
+            <b>Etat du Personnel:</b> {{ personne.is_available }}</li>
+           <!--<a href="liste_tache/{{personne.name}}"type="submit" class="btn btn-sn btn-info">Voir</a> --->
+           <!--<a href="{% url 'bloc:liste_tache' %}" typr="submit"class="btn btn-primary">liste des taches</a>-->
+    {% empty %}
+        <li>Aucun personnel</li>
+    {% endfor %}
+</div>
+<div class="col-sm-4"></div>
+    </ul>
+</div>
+</div> 
+</body>
+</html>
+{% endblock %}  
+
+    

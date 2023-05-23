@@ -1,0 +1,67 @@
+{% extends 'bloc/base.html' %}
+{% load static %}
+{% block content %}
+<h1>Portfolio</h1>
+
+{% for project in projects %}
+<div class="project">
+  <h2>{{ project.libellai }}</h2>
+    <img src="{{ project.image.url }}" width="500" height="500" />
+  <p>{{ project.description }}</p>
+  <p>{{ project.pourcentage }} %</p>
+  <p>{{ project.team.name }}</p>
+  <p>{{ project.datedebut }}</p>
+  <p>{{ project.datefin }}</p>
+</div>
+{% endfor %}
+{% endblock %}
+<script>
+var slides = document.getElementsByClassName("mySlides");
+var demoImgs = document.getElementsByClassName("demo");
+
+function currentSlide(n) {
+  showSlide(n);
+}
+
+function plusSlides(n) {
+  var currentSlide = getCurrentSlideIndex();
+  var nextSlide = currentSlide + n;
+  
+  if (nextSlide >= slides.length) {
+    nextSlide = 0;
+  } else if (nextSlide < 0) {
+    nextSlide = slides.length - 1;
+  }
+  
+  showSlide(nextSlide);
+}
+
+function showSlide(n) {
+  var i;
+  
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  
+  slides[n].style.display = "block";
+  
+  var captionText = slides[n].querySelector("#caption");
+  var imgAlt = demoImgs[n].getAttribute("alt");
+  captionText.innerHTML = imgAlt;
+}
+
+function getCurrentSlideIndex() {
+  var i;
+  
+  for (i = 0; i < slides.length; i++) {
+    if (slides[i].style.display === "block") {
+      return i;
+    }
+  }
+  
+  return 0;
+}
+</script>
+
+</body>
+</html>

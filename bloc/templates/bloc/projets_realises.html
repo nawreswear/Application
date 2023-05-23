@@ -1,0 +1,44 @@
+{% extends 'bloc/base.html' %}
+{% block content %}
+<div class="container mt-3">
+<h1>Projets  réalisées </h1>
+    <hr>
+    <table class="table">
+        <thead>
+            <tr>
+              <th> Nom Projet </th>
+              <th>Image </th>
+                <th> Description  Projet</th>
+                <th> Etat  Projet </th>
+                <th> Etat  D'avancement </th>
+                <th> Membres Equipe  </th>
+                <th> Date Debut </th>
+                <th> Date Fin </th>
+                <th> Action </th>
+          </tr>
+      </thead>
+      <tbody>
+{% for projet in projets %}
+<tr>
+  <td>  {{ projet.libellai }} </td> 
+  <td> <img src="{{ projet.image.url }}"width="100" height="50"/></td>
+    <td>  {{ projet.description }} </td> 
+    <td> {{ projet.achevé}} </td>
+    <td>{{ projet.pourcentage }} %</td>
+    <td> {{ projet.team.name }}</td>
+    <td> {{ projet.date_debut }}</td>
+    <td> {{ projet.date_fin }}</td>
+  
+  <td>
+   
+    <a href="deleteprojets_realises/{{projet.libellai }}" class="btn btn-sn btn-danger">Delete</a>
+      </td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+<br>
+<br>
+
+</body>
+{% endblock %}

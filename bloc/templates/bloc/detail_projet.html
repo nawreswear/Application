@@ -1,0 +1,10 @@
+{% extends 'bloc/base.html' %}
+{% block content %} 
+<h1>Modifier un projet </h1>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit"class="btn btn-success">Enregistrer</button>
+</form>
+{% endblock %}
+

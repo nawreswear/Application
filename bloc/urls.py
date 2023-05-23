@@ -1,0 +1,50 @@
+from django.urls import path   #,include
+from . import views
+from django.contrib.auth import views as auth_views
+app_name = 'bloc'
+urlpatterns = [	
+    path('', views.index ,name='index'),
+    path('liste_tache/',views.liste_tache,name='liste_tache'),
+    #path('bloc/lmeProject/detail_projet/<s:libellai>/', views.detail_projet, name='detail_projet'),
+
+    path('service_update/', views.service_update, name='service_update'),
+    path('portfolio/',views.portfolio,name='portfolio'),
+    path('Services/',views.Services,name='Services'),
+    path('service_detail/service_update/<str:description>/',views.service_update,name='service_update'),
+    path('service_create/',views.service_create,name='service_create'),
+   path('service_detail/deleteservice/<str:description>/', views.deleteservice,name='deleteservice'),
+    path('service_detail/',views.service_detail,name='service_detail'),
+    path('liste_personnel/',views.liste_personnel,name='liste_personnel'),
+    path('ajouter_personne/',views.ajouter_personne,name='ajouter_personne'),
+    #path('project/<int:pk>/', views.project_details, name='project_details'),
+    path('user/', views.user, name='user'),
+    path('meProject/', views.meProject, name='meProject'),
+    path('lmeProject/', views.lmeProject, name='lmeProject'),
+    path('lmeProject/deleteprojet/<str:libellai>/', views.deleteprojet,name='deleteprojet'),
+    path('lmeProject/detailprojet/<str:libellai>/', views.detailprojet,name='detailprojet'),
+    
+     
+    #path('lmeProject/detailprojet/<int:project_id>/', views.detailprojet, name='detailprojet'),
+    #path('addservice/', views.addservice,name='addservice'),
+    path('contact/',views.contact,name='contact'),
+    path('Equipe/',views.Equipe,name='Equipe'),
+    path('Equipe_details/',views.Equipe_details,name='Equipe_details'),
+    path('Equipe_details/detailequipe/<str:name>/', views.detailequipe,name='detailequipe'),
+    path('Equipe_details/deleteequipe/<str:name>/', views.deleteequipe,name='deleteequipe'),
+    path('ldetail/',views.ldetail,name='ldetail'),
+    path('add_detail/<int:pk>/',views.add_detail,name='add_detail'),
+    path('detail_form/',views.detail_form,name='detail_form'),
+    path('register/',views.register, name = 'register'),
+    path('projets_realises/',views.projets_realises, name = 'projets_realises'),
+    path('projets_en_cours/',views.projets_en_cours, name = 'projets_en_cours'),
+    path('project_create/',views.project_create, name = 'project_create'),
+    path('lmeProject/deleteprojet/<str:libellai>/', views.deleteprojet,name='deleteprojet'),
+    path('projets_en_cours/deleteprojets_en_cours/<str:libellai>/', views.deleteprojets_en_cours,name='deleteprojets_en_cours'),
+    path('projets_realises/deleteprojets_realises/<str:libellai>/', views.deleteprojets_realises,name='deleteprojets_realises'),
+    #path('home/', views.home,name='home'),
+    #path('Equipe/<int:pk>/', views.Equipe_details, name='Equipe_details'),
+    #path('user_projects/', views.user_projects_view, name='user_projects'),
+    #path('user_project/<int:pk>/', views.user_project_details_view, name='user_project_details'),
+    path('login/',auth_views.LoginView.as_view(template_name='bloc/registration/login.html'), name = 'login'),
+    path('logout/',auth_views.LogoutView.as_view(template_name='bloc/registration/logout.html'), name = 'logout'),
+]

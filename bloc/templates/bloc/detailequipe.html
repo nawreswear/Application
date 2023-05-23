@@ -1,0 +1,18 @@
+{% extends 'bloc/base.html' %}
+
+{% block content %}
+  <h1><center>Detail Equipe </center></h1>
+  <div class="row">
+    <dib class="col-md-6">
+    </div>
+  <div class="col-md-6">
+    <div class="text-warning display">
+      Nom Team :{{  equipe.name }}
+    </div>
+    <div  class="text-warning display">
+      Liste Personne  :{{ equipe.personnel }}
+    </div>
+  
+  </div>
+
+{% endblock content %}

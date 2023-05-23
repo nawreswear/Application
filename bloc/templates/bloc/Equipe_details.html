@@ -1,0 +1,21 @@
+{% extends 'bloc/base.html' %}
+{% block content %}
+<center><h1> Notre équipe </h1></center>
+<!-- body -->
+{% for m in membres %}
+<div class="container-fluid mt-3">
+    <div class="col-md-3">
+        <div class="card">
+<div class="card-body">
+   <p><b>Nom Equipe :</b> {{m.name}}</p>
+   <p><b>Titre:</b> {{ m.personnel}}</p>
+  <br>
+  <a href="detailequipe/{{m.name}}"type="submit" class="btn btn-sn btn-info">Voir</a>
+  <a href="deleteequipe/{{m.name}}"type="submit"class="btn btn-sn btn-danger">Delete</a></b>
+</div>
+</div>
+</div>
+</div>
+{% endfor %}
+{% endblock %}
+

@@ -1,0 +1,13 @@
+{% extends 'bloc/base.html' %}
+
+{% block content %}
+  <h1>Détail : {{ detail.name }}</h1>
+  <p>Description : {{ detail.description }}</p>
+  <p>Prix : {{ detail.price }}</p>
+  <p>Fichier : {{ detail.file }}</p>
+  <p>Projet : {{ detail.projet }}</p>
+  <p>Service : {{ detail.service }}</p>
+  <a href="{% url 'bloc:detail_update' detail.pk %}">Modifier</a>
+  <a href="{% url 'bloc:detail_delete' detail.pk %}">Supprimer</a>
+  
+{% endblock %}

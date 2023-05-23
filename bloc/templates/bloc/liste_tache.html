@@ -1,0 +1,204 @@
+{% extends 'bloc/base.html' %}
+
+{% block content %}
+<!DOCTYPE HTML>
+<html>
+	{% load static %}
+	<head>
+		{% block styles %}
+<style>
+  .product-image {
+    height: 400px;
+    object-fit: cover;
+  }
+  .card {
+    border: none;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+  .card:hover {
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+  }
+  .card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  .card-text {
+    font-size: 0.9rem;
+    color: #666;
+  }
+  .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+  .btn-primary:hover {
+    background-color: #0069d9;
+    border-color: #0062cc;
+  }
+</style>
+{% endblock %}
+<style>
+    .profile-details{
+display: flex;
+align-items: center;
+background:#7AC9D6;
+border: 2px solid #EFEEF1;
+border-radius: 6px;
+height: 50px;
+min-width: 220px;
+padding: 0 15px 0 2px;
+}
+.profile-details .admin_name{
+font-size: 15px;
+font-weight: 500;
+color: #333;
+margin: 0 10px;
+white-space: nowrap;
+border-radius: 20px;
+
+}
+.profile-details i{
+font-size: 25px;
+color: #333;
+}
+ </style>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="{% static 'assets/css/main.css' %}">
+		<noscript><link rel="stylesheet" type="text/css" href="{% static 'assets/css/noscript.css' %}"></noscript>
+		<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+	
+	</head>
+
+				
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
+
+							<!-- Logo -->
+								<a href="index.html" class="logo">
+									<img src="{% static 'images/logo.svg' %}" alt="">
+								</a>
+
+							<!-- Nav -->
+
+						</div>
+					</header>
+					<div id="main">
+						<div class="inner">
+							
+							
+								
+								<article class="style1">
+									<span class="image">
+										<img src="/media/{{ projet.image }}" style="height: 500px; width: 350px;" alt="">
+									</span>
+										<h2>{{ projet.libellai }}</h2>
+										<div class="content">
+											<p>{{ projet.description }}</p>
+											{% if user.is_authenticated %}
+
+													{% endif %}
+										</div>
+								</article>
+								<div class="container">
+							
+								<h2>Les taches  de ce projet </h2>
+								<div class="row">
+									{% for t in tache %}
+									<div class="col-md-4 mb-4">
+									  <div class="card">
+                                        {% if t.Img is   None %}
+										<img class="card-img-top product-image" src="/media/{{ t.Img }}" alt="{{ t.description }}" style="height: 500px; width: 350px;">
+										{% endif %}
+                                        <div class="card-body">
+											<center>
+										  <h5 class="display-4 mb-4 fw-bold text-center">{{ t.nom }}</h5>
+										  <p class="fw-bold text-center">Description:{{ t.description }} {{t.date_depot}}</p>
+                                          {% if t.Img is  not None %}
+                                          <a href="#" class="btn btn-outline-success my-2 my-sm-0" data-toggle="modal" data-target="#myModal{{ t.id }}">tâche bien deposse</a>
+                                          {% else %}
+                                          <a href="#" class="btn btn-outline-warning my-2 my-sm-0" data-toggle="modal" data-target="#myModal{{ t.id }}">Déposer ta tâche</a>
+                                          <!-- Bouton pour ouvrir la modale -->
+
+                            <!-- Modale -->
+                            <div class="modal fade" id="myModal{{ t.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel{{ t.id }}" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="myModalLabel{{ t.id }}">Déposer ta tâche</h5>
+                                            
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <!-- Champ de téléchargement d'image -->
+                                            <div class="form-group">
+                                                <label for="image{{ t.id }}">Image :</label>
+                                                <input type="file" class="form-control-file" id="image{{ t.id }}" name="image">
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <a href="" class="btn btn-outline-danger my-2 my-sm-0" type="submit">Fermer  </a>
+
+                                            <a href="{% url 'deposser' tache_id=t.id  %}" class="btn btn-outline-success my-2 my-sm-0" type="submit">deposser ton tache   </a>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+										</center>	
+										
+										</div>
+									  </div>
+									</div>
+									{% endfor %}
+									
+								  </div> 
+   </div>
+						</div>
+					</div>
+				<!-- Footer -->
+					<footer id="footer">
+						<div class="inner">
+							<section>
+								<h2>Get in touch</h2>
+								<form method="post" action="#">
+									<div class="fields">
+										<div class="field half">
+											<input type="text" name="name" id="name" placeholder="Name" />
+										</div>
+										<div class="field half">
+											<input type="email" name="email" id="email" placeholder="Email" />
+										</div>
+										<div class="field">
+											<textarea name="message" id="message" placeholder="Message"></textarea>
+										</div>
+									</div>
+									<ul class="actions">
+										<li><input type="submit" value="Send" class="primary" /></li>
+									</ul>
+								</form>
+							</section>
+						
+						</div>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+		<script src="{% static 'assets/js/jquery.min.js' %}"></script>
+		<script src="{% static 'assets/js/browser.min.js' %}"></script>
+		<script src="{% static 'assets/js/breakpoints.min.js' %}"></script>
+		<script src="{% static 'assets/js/util.js' %}"></script>
+		<script src="{% static 'assets/js/main.js' %}"></script>
+
+	</body>
+</html>
+{% endblock %}

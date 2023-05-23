@@ -1,0 +1,11 @@
+{% extends 'bloc/base.html' %}
+
+{% block content %}
+
+  <h1>{% if form.instance.pk %}Modifier{% else %}Ajouter{% endif %} un détail</h1>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="{% if form.instance.pk %}Modifier{% else %}Ajouter{% endif %}">
+  </form>
+{% endblock %}

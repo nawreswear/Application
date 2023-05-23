@@ -1,0 +1,21 @@
+{% extends 'bloc/base.html' %}
+{% block content %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <div class="col-md-12 text-center">
+    <title>Ajouter une personne</title>
+</head>
+<body>
+    <h1>Ajouter une personne</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit"lass="btn btn-success" value="Ajouter">
+        <a type="submit"class="btn btn-info"href="{% url 'bloc:liste_personnel' %}">Liste personne</a>
+    </form>
+</div>
+</body>
+</html>
+{% endblock %}

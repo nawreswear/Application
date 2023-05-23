@@ -1,0 +1,36 @@
+{% extends 'bloc/base.html' %}
+{% block content %}
+<div class="container mt-3">
+    <h4> Liste Details</h4>
+    <a href="{% url 'bloc:detail_form' %}"class="btn btn-success">Ajouter un détail</a>
+    <hr>
+    <table class="table">
+        <thead>
+            <tr>
+                <th> Nom</th>
+                <th> Description</th>
+                <th> price</th>
+                <th> Fichier</th>
+                <th> Action</th>
+            </tr>
+        </thead>
+        <tbody>
+          {% for detail in details %}
+            <tr>
+                <td>{{ detail.name }}</td>
+                <td>{{ detail.description }}</td>
+                <td>{{ detail.price }} DT</td>
+                <td>{{ detail.file }}</td>
+                <td>
+                <a href="updatefournisseur/{{f.nom}}" class="btn btn-sn btn-info">edit</a></td>
+                <td><a href="deletefournisseur/{{f.nom}}" class="btn btn-sn btn-danger">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <br>
+   
+</body>
+{% endblock content%}

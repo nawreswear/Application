@@ -1,0 +1,46 @@
+{% extends 'bloc/base.html' %}
+{% load static %}
+{% block content %}
+  <div class="col-md-12 text-center">
+    <h1>Liste des projets </h1>
+    </div> 
+    <hr>
+    <table class="table">
+        <thead>
+            <tr>
+              <th> Nom Projet </th>
+              <th> Description  Projet</th>
+              <th> Etat  Projet </th>
+              <th> Nom Service </th>
+              <th> Etat  D'avancement </th>
+              <th> Membres Equipe  </th>
+              <th> Date Debut </th>
+              <th> Date Fin </th>
+              <th> Action </th>
+            </tr>
+        </thead>
+        <tbody>
+  <tr>
+ {% for projet in projets %}  
+    <td>  {{ projet.libellai }} </td> 
+    <td>  {{ projet.description }} </td> 
+    <td> {{ projet.achevé}} </td>
+    <td> {{ projet.services.name }}</td>
+    <td> {{ projet.pourcentage }} %</td>
+    <td> {{ projet.team.name }}</td>
+    <td> {{ projet.date_debut }}</td>
+    <td> {{ projet.date_fin }}</td>
+    <td>
+      <a href="detailprojet/{{ projet.libellai }}" class="btn btn-sn btn-info">Edit</a></td>
+     <td> <a href="deleteprojet/{{ projet.libellai }}" class="btn btn-sn btn-danger">Delete</a>
+    </td>
+  </tr>
+
+   {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <br>
+   
+</body>
+{% endblock %}

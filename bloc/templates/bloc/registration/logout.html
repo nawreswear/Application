@@ -1,0 +1,5 @@
+{% extends "bloc/base.html" %}
+{% block content %}
+<h2>Vous êtes déconnecté. </h2>
+<a href="{% url 'bloc:login' %}"class="btn btn-default">Se reconnecter</a>
+{% endblock %}

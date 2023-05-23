@@ -1,0 +1,32 @@
+{% extends 'bloc/base.html' %}
+{% block content %}
+<div class="container mt-3">
+    <center><h4> Liste des service</h4></center>
+    <a href="{% url 'bloc:service_create' %}" class="btn btn-sn btn-info">Add New</a>
+    <hr>
+    <table class="table">
+        <thead>
+            <tr>
+              <th>Service Description</th>
+              <th>Service Type</th>
+              <th>Action</th>
+          </tr>
+      </thead>
+      <tbody>
+        {% for s in service %}
+          <tr>
+              <td>{{s.description}}</td>
+              <td>{{s.type}}</td>
+              <td>
+              <a href="service_update/{{ s.description}}" class="btn btn-sn btn-info">Edit</a>
+              <a href="deleteservice/{{ s.description }}" class="btn btn-sn btn-danger">Delete</a>
+              </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <br>
+   
+</body>
+{% endblock %}

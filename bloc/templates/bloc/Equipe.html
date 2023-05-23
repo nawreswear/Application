@@ -1,0 +1,12 @@
+{% extends 'bloc/base.html' %}
+{% block content %}
+<div class="col-md-12 text-center">
+    <h2>Manip équipe ...... </h2>
+   
+   <form method="post">
+   {% csrf_token %}
+   {{ form.as_p }}
+   <button type="submit"class="btn btn-success ">Créer équipe</button>
+   <a href="{% url 'bloc:Equipe_details' %}"class="btn btn-primary">liste des Equipes</a>
+</div> 
+{% endblock %}
